@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-//import Hour from './hour.js'
+import Hour from './hour.js'
 var hourSchema = new mongoose.Schema({
     hour: { 
       type: Number,
@@ -19,6 +19,7 @@ const daySchema = new mongoose.Schema({
       required: true,
       unique:true
   },
+  //hours: [{hour:{type: Number}, count: {type:Number}}]
   hours:[hourSchema]
 });
 const Day = mongoose.model('Day', daySchema);

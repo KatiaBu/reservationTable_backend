@@ -2,16 +2,16 @@ require('dotenv').config()
 
 import express from 'express';
 import { connectDb } from './mongo_db.js';
+import routes from './routes.js';
+import parser from 'body-parser';
+import cors from 'cors'
 
 const app = express();
 
-app.get('/api/v1/test', (req, res) => {
-    res.status(200).send({
-      success: 'true',
-      message: 'test test'
-    })
-  });
-  
+app.use(cors());
+app.use(parser.json());
+app.use(parser.urlencoded({ extended: false }));
+app.use('/api', routes);
 
 connectDb().then(async () => {
   app.listen(process.env.PORT, () =>
