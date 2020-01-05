@@ -15,7 +15,7 @@ const getReservations = async (req, res) => {
             return res.status(200).json({ date: day.date, hours: hours });
         }
         else {
-            newDay = { date: req.body.date, hours: openigHours }
+            let newDay = { date: req.body.date, hours: openigHours }
             return res.status(200).json(newDay);
         }
 
